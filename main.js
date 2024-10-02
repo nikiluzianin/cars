@@ -29,6 +29,7 @@ class Car {
     }
 
 }
+// stayed the same from the previous, car class with constructor and three methods
 
 const displayMessage = (message, type = "success") => {
     const messageElement = document.querySelector("#message");
@@ -39,6 +40,7 @@ const displayMessage = (message, type = "success") => {
         messageElement.className = "";
     }, 3000);
 };
+// outputs message to a designated spot on the page for a short time
 
 
 const addCar = (e) => {
@@ -79,6 +81,7 @@ const addCar = (e) => {
         displayMessage(error.message, "error");
     }
 };
+// the same thing - adds car to the array if info is correct. added local storage and displays message 
 
 const loadCarsFromLocalStorage = () => {
     const storedCars = localStorage.getItem('cars');
@@ -90,6 +93,7 @@ const loadCarsFromLocalStorage = () => {
         displayTable();
     }
 };
+// loads cars from storage
 
 const displayTable = () => {
     const table = document.querySelector("#carsTable");
@@ -121,6 +125,7 @@ const displayTable = () => {
         row.insertCell(-1).appendChild(deleteButton);
     });
 };
+// adds cars to table and adds a delete button based on the car index in table
 
 const deleteCar = (index) => {
     cars.splice(index, 1);
@@ -128,6 +133,7 @@ const deleteCar = (index) => {
     displayTable();
     displayMessage("Car deleted successfully!");
 };
+// deletes the car from the cars array, from local storage and refreshes the table
 
 
 const searchCar = (e) => {
@@ -159,6 +165,6 @@ const searchCar = (e) => {
 
 addCarForm.addEventListener("submit", addCar);
 searchCarForm.addEventListener("submit", searchCar);
-window.addEventListener('load', loadCarsFromLocalStorage);
+window.addEventListener('load', loadCarsFromLocalStorage); // loads cars on load of the page
 
 
