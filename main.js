@@ -16,20 +16,27 @@ class Car {
         this.year = parseInt(year);
     }
 
+    //constructor for car with hadded year
+
     getCarAge() {
         const currentYear = new Date().getFullYear();
         return currentYear - this.year;
     }
 
+    // function calculates car age
+
     getDiscountedPrice() {
         return this.getCarAge() > 10 ? this.price * 0.85 : this.price;
     }
+    // calculates discounted price
 
     isEligibleForDiscount() {
         return this.getCarAge() > 10;
     }
-
+    // checks if the car qualifys for discount
 }
+// class car with constructor and 3 methods
+
 
 const addCar = (e) => {
     e.preventDefault();
@@ -47,6 +54,7 @@ const addCar = (e) => {
         if (!license || !maker || !model || !owner || isNaN(price) || !color || isNaN(year)) {
             throw new Error("All fields are required and must be valid.");
         }
+        // checks if any of the form fields are empty
 
         if (price <= 0) {
             throw new Error("Price must be a positive number.");
@@ -55,6 +63,7 @@ const addCar = (e) => {
         if (year < 1886 || year > currentYear) {
             throw new Error(`Year must be between 1886 and ${currentYear}.`);
         }
+        // checks if the price and year are good
 
         const newCar = new Car(license, maker, model, owner, price, color, year);
         addCarForm.reset();
@@ -64,6 +73,7 @@ const addCar = (e) => {
     } catch (error) {
         alert(error.message);
     }
+    // catches the first of the errors
 };
 
 const displayTable = () => {
@@ -82,14 +92,19 @@ const displayTable = () => {
             row.insertCell(-1).textContent = detail ?? 'N/A';
         });
 
+
         row.insertCell(-1).textContent = `${price.toFixed(2)}€`;
+        // fillinf the table through decionstruction the object
 
         const discountedPrice = car.isEligibleForDiscount()
             ? `$${car.getDiscountedPrice().toFixed(2)}`
             : "No Discount";
         row.insertCell(-1).textContent = discountedPrice;
+        // calculates teh discount
     });
 };
+// adds cars to tables
+
 
 
 const searchCar = (e) => {
@@ -118,6 +133,8 @@ const searchCar = (e) => {
         searchResult.innerHTML = "<p>No car found with the given license plate.</p>";
     }
 };
+// searches for the car based on commparing the plate numbers and outputs it if found or prints nnot found
 
 addCarForm.addEventListener("submit", addCar);
 searchCarForm.addEventListener("submit", searchCar);
+//listeners for the forms
