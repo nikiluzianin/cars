@@ -15,6 +15,7 @@ class Car {
         this.color = color;
     }
 }
+// constructor
 
 const addCar = (e) => {
     e.preventDefault();
@@ -33,6 +34,8 @@ const addCar = (e) => {
     cars.push(newCar)
     displayTable();
 }
+// adding cars
+// prevents default, creating new instance of car with data from fields, cleans the car form, adds car to cars array, refreshes table
 
 const displayTable = () => {
     const table = document.querySelector('#carsTable');
@@ -48,6 +51,7 @@ const displayTable = () => {
         })
     })
 }
+// for each instance of car in the array outputs it to the table row by row cell by cell
 
 const searchCar = (e) => {
     e.preventDefault();
@@ -67,5 +71,8 @@ const searchCar = (e) => {
     }
 }
 
+// gets the license plat from the field, finds the car with the same plate. if found - shows the car info, if not, tells taht there is no such car
+
 addCarForm.addEventListener('submit', addCar);
 searchCarForm.addEventListener('submit', searchCar);
+// adds event listeners
